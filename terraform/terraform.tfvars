@@ -1,0 +1,13 @@
+region              = "us-east-1"
+project             = "nimbuskart"
+environment         = "staging"
+owner               = "devops-team"
+vpc_cidr            = "10.20.0.0/16"
+public_subnet_cidrs = ["10.20.1.0/24", "10.20.2.0/24"]
+availability_zones  = ["us-east-1a", "us-east-1b"]
+ssh_cidr_blocks     = ["0.0.0.0/0"]
+instance_type       = "t3.micro"
+ami_id                = "ami-1657c0eb"
+ebs_volume_size     = 10
+instance_count      = 2
+enable_lifecycle    = false

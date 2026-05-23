@@ -1,0 +1,37 @@
+{
+  "scan_timestamp": "2026-05-21T12:00:00+00:00",
+  "account_id": "000000000000",
+  "region": "us-east-1",
+  "summary": {
+    "total_orphans": 2,
+    "estimated_monthly_waste_usd": 4.36
+  },
+  "findings": [
+    {
+      "resource_id": "vol-ffffffff",
+      "resource_type": "ebs_volume",
+      "reason": "Unattached EBS volume",
+      "age_days": 45,
+      "estimated_monthly_cost_usd": 0.80,
+      "tags": {
+        "Name": "nimbuskart-staging-orphan-detection",
+        "Project": "nimbuskart",
+        "Environment": "staging",
+        "Owner": "devops-team",
+        "ManagedBy": "terraform"
+      },
+      "suggested_action": "Delete or attach to a running instance",
+      "safe_to_auto_delete": true
+    },
+    {
+      "resource_id": "eipalloc-ffffffff",
+      "resource_type": "elastic_ip",
+      "reason": "Elastic IP not associated with any resource",
+      "age_days": 0,
+      "estimated_monthly_cost_usd": 3.60,
+      "tags": {},
+      "suggested_action": "Release the Elastic IP",
+      "safe_to_auto_delete": true
+    }
+  ]
+}
