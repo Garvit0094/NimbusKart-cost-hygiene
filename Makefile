@@ -1,9 +1,10 @@
-.PHONY: help localstack localstack-stop setup init plan apply destroy fmt validate test lint clean dev
+.PHONY: help all localstack localstack-stop setup init plan apply destroy fmt validate test lint clean dev run
 
 help:
 	@echo "NimbusKart Cost Hygiene Makefile"
 	@echo ""
 	@echo "Targets:"
+	@echo "  all         Full pipeline: start LocalStack → setup → init → apply → run janitor"
 	@echo "  localstack  Start LocalStack Docker container (v4.0.0)"
 	@echo "  localstack-stop  Stop LocalStack container"
 	@echo "  setup       Install Python dependencies (pip install -r requirements.txt)"
@@ -18,7 +19,10 @@ help:
 	@echo "  clean       Remove .terraform, __pycache__, tfstate, reports"
 	@echo "  dev         Install dev dependencies + pre-commit hooks"
 
+all: localstack setup init apply run
+
 localstack:
+	docker rm -f localstack 2>nul || ver>nul
 	docker run --rm -d --name localstack -p 4566:4566 -e SERVICES=ec2,s3,sts,iam -e AWS_DEFAULT_REGION=us-east-1 localstack/localstack:4.0.0
 
 localstack-stop:
@@ -58,6 +62,9 @@ clean:
 	-rm -f terraform/terraform.tfstate*
 	-find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	-rm -rf .pytest_cache reports/
+
+run:
+	python janitor/janitor.py --dry-run
 
 dev: setup
 	@echo "pre-commit install (requires .pre-commit-config.yaml)"
