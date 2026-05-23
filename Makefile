@@ -1,9 +1,11 @@
-.PHONY: help setup init plan apply destroy fmt validate test lint clean dev
+.PHONY: help localstack localstack-stop setup init plan apply destroy fmt validate test lint clean dev
 
 help:
 	@echo "NimbusKart Cost Hygiene Makefile"
 	@echo ""
 	@echo "Targets:"
+	@echo "  localstack  Start LocalStack Docker container (v4.0.0)"
+	@echo "  localstack-stop  Stop LocalStack container"
 	@echo "  setup       Install Python dependencies (pip install -r requirements.txt)"
 	@echo "  init        terraform init via tflocal"
 	@echo "  plan        terraform plan via tflocal"
@@ -15,6 +17,12 @@ help:
 	@echo "  lint        Run black --check + flake8 on janitor/"
 	@echo "  clean       Remove .terraform, __pycache__, tfstate, reports"
 	@echo "  dev         Install dev dependencies + pre-commit hooks"
+
+localstack:
+	docker run --rm -d --name localstack -p 4566:4566 -e SERVICES=ec2,s3,sts,iam -e AWS_DEFAULT_REGION=us-east-1 localstack/localstack:4.0.0
+
+localstack-stop:
+	docker stop localstack
 
 setup:
 	pip install -r janitor/requirements.txt
