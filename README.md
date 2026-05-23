@@ -62,6 +62,8 @@ To delete orphaned resources:
 python janitor/janitor.py --delete
 ```
 
+> **Safe delete**: Resources tagged `Protected=true` are automatically skipped in delete mode, even if they match orphan criteria. Dry-run is the default — explicit `--delete` flag is required to perform deletions.
+
 ### 5. Run unit tests
 
 ```bash
