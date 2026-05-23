@@ -180,7 +180,7 @@ Placing instances directly in public subnets with public IPs bypasses load balan
 
 ## AI usage disclosure
 
-This project was generated with the assistance of AI (Claude) as a productivity aid for boilerplate generation, file scaffolding, and documentation drafting. Every architectural decision, configuration value, and security tradeoff was reviewed and validated by a human engineer before inclusion. Specific areas where AI contributed:
+AI tools were used selectively for scaffolding, boilerplate generation, and debugging assistance. Every architectural decision, configuration value, and security tradeoff was reviewed and validated by a human engineer before inclusion. Specific areas where AI contributed:
 
 - Initial file structure and Makefile scaffolding
 - Terraform module skeleton generation
