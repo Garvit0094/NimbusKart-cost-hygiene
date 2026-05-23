@@ -50,7 +50,7 @@ See `docs/walkthrough.md` for step-by-step instructions. The fastest path to ver
 ```bash
 docker run --rm -d --name localstack -p 4566:4566 \
   -e SERVICES=ec2,s3,sts,iam -e AWS_DEFAULT_REGION=us-east-1 \
-  localstack/localstack:latest
+  localstack/localstack:4.0.0
 pip install -r janitor/requirements.txt terraform-local
 cd terraform && tflocal init && tflocal apply -auto-approve
 cd .. && python janitor/janitor.py --dry-run

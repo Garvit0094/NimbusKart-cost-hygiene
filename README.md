@@ -32,7 +32,7 @@ docker run --rm -d \
   -p 4566:4566 \
   -e SERVICES=ec2,s3,sts,iam \
   -e AWS_DEFAULT_REGION=us-east-1 \
-  localstack/localstack:latest
+  localstack/localstack:4.0.0
 ```
 
 ### 2. Install dependencies
