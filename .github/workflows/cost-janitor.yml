@@ -79,6 +79,7 @@ jobs:
           AWS_DEFAULT_REGION: us-east-1
 
       - name: Upload reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cost-janitor-reports
