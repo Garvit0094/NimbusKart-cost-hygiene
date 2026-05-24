@@ -55,7 +55,7 @@ variable "instance_type" {
 variable "ami_id" {
   description = "AMI ID for EC2 instances"
   type        = string
-    default     = "ami-979d7649"
+  default     = "ami-979d7649"
 }
 
 variable "ebs_volume_size" {
