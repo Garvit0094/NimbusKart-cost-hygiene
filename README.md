@@ -191,3 +191,5 @@ AI tools were used selectively for scaffolding, boilerplate generation, and debu
 - README wording suggestions
 
 All logic, pricing constants, test assertions, and production-readiness decisions were made by the human author.
+
+
